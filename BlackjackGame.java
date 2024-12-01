@@ -19,6 +19,7 @@ public class BlackjackGame {
             player.ruka(deck.viborkarti());
             opponent.ruka(deck.viborkarti());
             opponent.ruka(deck.viborkarti());
+            System.out.println("Количество созданных колод: " + Deck.getDeckCount());
             // Основная игра
             while (playAgain1==true || playAgain2==true) {
                 // Отображение карт

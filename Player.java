@@ -9,8 +9,17 @@ class Player {
     }
     // Получение карты в руку игрока
     public void ruka(int cardValue) {
-        if (hand.size() < Deck.getMaxCards()) {
-            hand.add(new Card(cardValue)); // Динамическое выделение карты
+        try {
+            if (cardValue < 1 || cardValue > 11) {
+                throw new InvalidCardValueException("Значение карты должно быть в диапазоне от 1 до 11.");
+            }
+            if (hand.size() < Deck.getMaxCards()) {
+                hand.add(new Card(cardValue)); // Динамическое выделение карты
+            } else {
+                System.out.println("Невозможно добавить карту. Рука игрока полна.");
+            }
+        } catch (InvalidCardValueException e) {
+            System.out.println("Ошибка: " + e.getMessage());
         }
     }
     // Вывод руки игрока
