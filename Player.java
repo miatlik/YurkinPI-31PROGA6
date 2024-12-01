@@ -55,28 +55,32 @@ class Player {
     public GameResult vivodrez(Player opponent) {
         int playerScore = this.getTotalValue();
         int opponentScore = opponent.getTotalValue();
-        String resultMessage;
+        StringBuilder resultMessage = new StringBuilder(); // Создаем экземпляр StringBuilder
 
         if (playerScore > 21 && opponentScore < 22) {
-            resultMessage = "У вас перебор. Вы проиграли.";
+            resultMessage.append("У вас перебор. Вы проиграли.")
+                    .append(String.format(" (Ваши очки: %d, Очки противника: %d)", playerScore, opponentScore));
         } else if (opponentScore > 21 && playerScore < 22) {
-            resultMessage = "У противника перебор. Вы выиграли.";
+            resultMessage.append("У противника перебор. Вы выиграли.")
+                    .append(String.format(" (Ваши очки: %d, Очки противника: %d)", playerScore, opponentScore));
         } else if (playerScore > 21 && opponentScore > 21) {
             if (playerScore > opponentScore) {
-                resultMessage = "У вас и противника перебор. Вы проиграли, так как имеете больше очков.";
+                resultMessage.append("У вас и противника перебор. Вы проиграли, так как имеете больше очков.")
+                        .append(String.format(" (Ваши очки: %d, Очки противника: %d)", playerScore, opponentScore));
             } else {
-                resultMessage = "У вас и противника перебор. Вы выиграли, так как имеете меньше очков.";
+                resultMessage.append("У вас и противника перебор. Вы выиграли, так как имеете меньше очков.")
+                        .append(String.format(" (Ваши очки: %d, Очки противника: %d)", playerScore, opponentScore));
             }
         } else if (playerScore < 22 && opponentScore < 22) {
             if (playerScore > opponentScore) {
-                resultMessage = "Вы выиграли. Вы ближе к 21 очку.";
+                resultMessage.append("Вы выиграли. Вы ближе к 21 очку.")
+                        .append(String.format(" (Ваши очки: %d, Очки противника: %d)", playerScore, opponentScore));
             } else if (playerScore < opponentScore) {
-                resultMessage = "Вы проиграли. Противник ближе к 21 очку.";
+                resultMessage.append("Вы проиграли. Противник ближе к 21 очку.")
+                        .append(String.format(" (Ваши очки: %d, Очки противника: %d)", playerScore, opponentScore));
             } else {
-                resultMessage = "Ничья.";
+                resultMessage.append("Ничья.");
             }
-        } else {
-            resultMessage = "Результат не определен.";
         }
 
         return new GameResult(resultMessage);

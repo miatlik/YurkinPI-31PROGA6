@@ -1,11 +1,11 @@
 class GameResult {
-    private String resultMessage;
+    private StringBuilder resultMessage;
 
-    public GameResult(String resultMessage) {
+    public GameResult(StringBuilder resultMessage) {
         this.resultMessage = resultMessage;
     }
 
-    public String getResultMessage() {
+    public StringBuilder getResultMessage() {
         return resultMessage;
     }
 }
